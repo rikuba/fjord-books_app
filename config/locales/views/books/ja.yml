@@ -1,0 +1,14 @@
+ja:
+  books:
+    index:
+      title: 本の一覧
+    create:
+      success: 本を追加しました。
+    new:
+      title: 本を追加
+    edit:
+      title: 本を編集
+    update:
+      success: 本を更新しました。
+    destroy:
+      success: 本を削除しました。
