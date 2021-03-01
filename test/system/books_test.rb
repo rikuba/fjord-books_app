@@ -4,7 +4,12 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
+    I18n.default_locale = :en
     @book = books(:one)
+  end
+
+  teardown do
+    I18n.default_locale = :ja
   end
 
   test 'visiting the index' do
