@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'books#index'
+  root to: 'home#index'
   devise_for :users
   resources :users, only: %i[index show]
   resources :books
