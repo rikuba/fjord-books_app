@@ -12,8 +12,11 @@ ja:
         title: 題名  #g
 
       user:
+        address: 住所  #g
         email: Eメール  #g
         encrypted_password: 暗号化パスワード  #g
+        introduction: 自己紹介  #g
+        postal_code: 郵便番号  #g
         remember_created_at: ログイン記憶時刻  #g
         reset_password_sent_at: パスワードリセット送信時刻  #g
         reset_password_token: パスワードリセット用トークン  #g

@@ -215,6 +215,7 @@ ja:
       delete_confirm: よろしいですか？
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
+      profile: プロフィール
       edit_user: ユーザ編集
       sign_out: ログアウト
       signed_in_as: "%{name}としてログインしています"
