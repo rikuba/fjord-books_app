@@ -1,0 +1,10 @@
+ja:
+  dictionary:
+    messages:
+      confirm: よろしいですか？
+
+    words:
+      back: 戻る
+      show: 表示
+      edit: 編集
+      destroy: 削除

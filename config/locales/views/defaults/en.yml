@@ -1,0 +1,10 @@
+en:
+  dictionary:
+    messages:
+      confirm: 'Are you sure?'
+
+    words:
+      back: Back
+      show: Show
+      edit: Edit
+      destroy: Destroy
