@@ -33,4 +33,14 @@ Book.create!(
   picture: picture_file('erd.jpg')
 )
 
+Faker::Config.locale = :ja
+
+100.times do
+  Book.create!(
+    title: Faker::Book.unique.title,
+    memo: Faker::Lorem.paragraph(sentence_count: 1),
+    author: Faker::Book.author
+  )
+end
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
