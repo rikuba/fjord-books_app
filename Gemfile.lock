@@ -321,6 +321,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   i18n_generators
+  image_processing
   jbuilder (~> 2.7)
   kaminari
   letter_opener_web

@@ -1,5 +1,7 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
+<%= image_tag @user.picture_medium if @user.picture.attached? %>
+
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>

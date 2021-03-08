@@ -62,6 +62,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
+gem 'image_processing'
 gem 'kaminari'
 
 gem 'omniauth'
