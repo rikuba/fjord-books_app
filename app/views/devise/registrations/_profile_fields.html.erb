@@ -23,4 +23,4 @@
   <%= f.file_field :picture, accept: 'image/jpeg,image/png,image/gif' %>
 </div>
 
-<%= image_tag resource.picture_medium if resource.picture.attached? %>
+<%= image_tag resource.picture_medium if resource.valid_picture? %>
