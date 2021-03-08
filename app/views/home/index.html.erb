@@ -1,0 +1,19 @@
+<h1>BooksApp</h1>
+
+<% if user_signed_in? %>
+  <p>
+    <%= t('views.common.signed_in_as', name: current_user.email) %>
+    <br>
+    <%= link_to t('views.common.edit_user'), edit_user_registration_path %> |
+    <%= link_to t('views.common.sign_out'), destroy_user_session_path, method: :delete %>
+  </p>
+  <ul>
+    <li><%= link_to Book.model_name.human, books_path %></li>
+    <li><%= link_to User.model_name.human, users_path %></li>
+  </ul>
+<% else %>
+  <ul>
+    <li><%= link_to t('devise.shared.links.sign_up'), new_user_registration_path %></li>
+    <li><%= link_to t('devise.shared.links.sign_in'), new_user_session_path %></li>
+  </ul>
+<% end %>
