@@ -216,12 +216,14 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       title_show: "%{name}の詳細"
-      title_followers: "%{name}のフォロワー"
-      title_followings: "%{name}のフォロー"
+      title_followers: "%{name}さんのフォロワー"
+      title_followings: "%{name}さんのフォロー"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
       follow: フォロー
       unfollow: フォロー解除
+      no_followings: まだ誰もフォローしていません
+      no_followers: まだフォロワーがいません
     pagination:
       first: '最初'
       last: '最後'

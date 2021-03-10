@@ -1,5 +1,11 @@
 <h1><%= t('views.common.title_followings', name: @user.name) %></h1>
 
-<%= render 'shared/users_table', users: @users %>
+<% if @users.empty? %>
+  <p><%= t('views.common.no_followings') %></p>
+<% else %>
+  <%= render 'shared/users_table', users: @users %>
+<% end %>
 
 <%= paginate @users %>
+
+<%= link_to t('views.common.back'), @user %>
