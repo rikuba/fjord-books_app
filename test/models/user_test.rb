@@ -17,4 +17,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not one.following?(two)
     assert_not two.following?(one)
   end
+
+  test 'should not follow themselves' do
+    one = users(:one)
+    assert_not one.following?(one)
+
+    one.follow(one)
+    assert_not one.following?(one)
+  end
 end

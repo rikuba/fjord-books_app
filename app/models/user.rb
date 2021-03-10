@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def follow(user)
-    followings << user
+    followings << user if user != self
   end
 
   def unfollow(user)
