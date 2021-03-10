@@ -1,4 +1,4 @@
-<h1><%= User.model_name.human %></h1>
+<h1><%= t('views.common.title_followings', name: @user.name) %></h1>
 
 <%= render 'shared/users_table', users: @users %>
 
