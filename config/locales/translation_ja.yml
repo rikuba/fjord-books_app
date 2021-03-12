@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       book: 本  #g
+      report: 日報
 
     attributes:
       book:
@@ -15,3 +16,9 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      report:
+        content: 本文
+        title: 題名
+        user: 投稿者
+        created_at: 投稿日時
+        updated_at: 更新日時
