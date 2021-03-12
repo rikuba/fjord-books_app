@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_one_attached :avatar
+  has_many :reports, dependent: :destroy
 
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
