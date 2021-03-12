@@ -83,4 +83,19 @@ User.order(id: :desc).each do |user|
   end
 end
 
+Report.destroy_all
+
+users = User.order(:id).take(5)
+
+Report.transaction do
+  11.times do
+    users.each do |user|
+      user.reports.create!(
+        title: Faker::Lorem.word,
+        content: Faker::Lorem.paragraph
+      )
+    end
+  end
+end
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
