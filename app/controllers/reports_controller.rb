@@ -2,7 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
-  before_action :correct_user, only: %i[edit update destroy]
+  before_action :verify_current_user, only: %i[edit update destroy]
 
   # GET /reports
   def index
@@ -58,8 +58,8 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content)
   end
 
-  def correct_user
-    report = current_user.reports.find_by(id: params[:id])
-    redirect_to reports_url, alert: t('controllers.common.alert_incorrect_user') if report.nil?
+  def verify_current_user
+    report = Report.find(params[:id])
+    redirect_to reports_url, alert: t('controllers.common.alert_incorrect_user') if current_user != report.user
   end
 end
