@@ -17,3 +17,10 @@
   <%= f.label :self_introduction %>
   <%= f.text_area :self_introduction %>
 </div>
+
+<div class="field">
+  <%= f.label :picture %>
+  <%= f.file_field :picture, accept: 'image/jpeg,image/png,image/gif' %>
+</div>
+
+<%= image_tag resource.picture_medium if resource.valid_picture? %>

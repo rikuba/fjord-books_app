@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# https://qiita.com/jnchito/items/683e14179be71c740113
+ActiveStorage::AnalyzeJob.queue_adapter = :inline
+ActiveStorage::PurgeJob.queue_adapter = :inline
+
 print '開発環境のデータをすべて削除して初期データを投入します。よろしいですか？[Y/n]: ' # rubocop:disable Rails/Output
 unless $stdin.gets.chomp == 'Y'
   puts '中止しました。' # rubocop:disable Rails/Output
@@ -46,13 +50,18 @@ User.destroy_all
 
 50.times do |n|
   name = Faker::Name.name
-  User.create!(
+  user = User.create!(
     email: "sample-#{n}@example.com",
     password: 'password',
     name: name,
     postal_code: "123-#{n.to_s.rjust(4, '0')}",
     address: Faker::Address.full_address,
     self_introduction: "こんにちは、#{name}です。"
+  )
+  picture = "sample-#{n % 5}"
+  user.picture.attach(
+    io: URI.parse(Faker::Avatar.image(slug: picture, format: 'png')).open,
+    filename: "#{picture}.png"
   )
 end
 
