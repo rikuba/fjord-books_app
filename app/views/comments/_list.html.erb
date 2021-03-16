@@ -1,0 +1,35 @@
+<h2><%= Comment.model_name.human %></h2>
+
+<% if comments.empty? %>
+  <p><%= t('views.common.nothing', name: Comment.model_name.human) %></p>
+<% else %>
+  <% comments.each do |comment| %>
+    <% commentable = comment.commentable %>
+    <% user = comment.user %>
+
+    <div class="comment">
+      <p>
+        <%= link_to user do %>
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar.variant(resize_to_fill: [30, 30]) %>
+          <% end %>
+          <%= user.name.presence || user.email %>
+        <% end %>
+      </p>
+
+      <p><%= simple_format(h(comment.content)) %></p>
+
+      <p>
+        <%= l comment.created_at %>
+        <% if user == current_user %>
+          | <%= link_to t('views.common.edit'), [:edit, commentable, comment] %>
+          | <%= link_to t('views.common.destroy'), [commentable, comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+<% end %>
+
+<h3><%= t('views.common.title_new', name: Comment.model_name.human) %></h3>
+
+<%= render 'comments/form', comment: comments.build %>

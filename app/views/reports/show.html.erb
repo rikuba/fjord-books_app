@@ -25,6 +25,8 @@
   <%= l @report.updated_at %>
 </p>
 
+<%= render 'comments/list', comments: @report.comments %>
+
 <% if @report.user == current_user %>
   <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
   <%= link_to t('views.common.destroy'), @report, method: :delete, data: { confirm: t('views.common.delete_confirm') } %> |
