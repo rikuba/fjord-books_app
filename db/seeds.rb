@@ -75,6 +75,8 @@ end
 
 # User.destroy_all で全件削除されているはずだが念のため
 Relationship.destroy_all
+Report.destroy_all
+Comment.destroy_all
 
 # 後輩が先輩を全員フォローする
 User.order(id: :desc).each do |user|
@@ -82,8 +84,6 @@ User.order(id: :desc).each do |user|
     user.follow(other)
   end
 end
-
-Report.destroy_all
 
 users = User.order(:id).take(5)
 
@@ -93,6 +93,17 @@ Report.transaction do
       user.reports.create!(
         title: Faker::Lorem.word,
         content: Faker::Lorem.paragraph
+      )
+    end
+  end
+end
+
+Comment.transaction do
+  [Book.first, Report.first].each do |commentable|
+    users.each do |user|
+      commentable.comments.create!(
+        content: Faker::Lorem.sentence,
+        user: user
       )
     end
   end
