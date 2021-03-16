@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
 
   # GET /reports
   def index
-    @reports = Report.order(:id).page(params[:page])
+    @reports = Report.includes(:user).order(:id).page(params[:page])
   end
 
   # GET /reports/1

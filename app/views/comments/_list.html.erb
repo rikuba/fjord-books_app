@@ -3,7 +3,7 @@
 <% if comments.empty? %>
   <p><%= t('views.common.nothing', name: Comment.model_name.human) %></p>
 <% else %>
-  <% comments.each do |comment| %>
+  <% comments.includes(:user).each do |comment| %>
     <% commentable = comment.commentable %>
     <% user = comment.user %>
 
