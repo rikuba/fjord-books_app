@@ -3,7 +3,7 @@
 <% if comments.empty? %>
   <p><%= t('views.common.nothing', name: Comment.model_name.human) %></p>
 <% else %>
-  <% comments.includes(:user).each do |comment| %>
+  <% comments.includes(user: { avatar_attachment: :blob }).each do |comment| %>
     <% commentable = comment.commentable %>
     <% user = comment.user %>
 
