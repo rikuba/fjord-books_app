@@ -23,3 +23,5 @@ ja:
         user: 投稿者
         created_at: 投稿日時
         updated_at: 更新日時
+      comment:
+        content: 本文
