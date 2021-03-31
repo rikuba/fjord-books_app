@@ -4,7 +4,10 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    log_in(email: 'alice@example.com', password: 'password')
+    @user = create(:user)
+    @user.reports.create(attributes_for(:report))
+
+    log_in(email: @user.email, password: @user.password)
   end
 
   test 'visiting the index' do
@@ -30,10 +33,12 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '編集'
 
+    fill_in 'タイトル', with: 'テスト技法 2日目'
     fill_in '内容', with: 'システムテストを修正しました。'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
+    assert_text 'テスト技法 2日目'
     assert_text 'システムテストを修正しました。'
   end
 

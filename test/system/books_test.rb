@@ -4,7 +4,10 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    log_in(email: 'alice@example.com', password: 'password')
+    @user = create(:user)
+    @book = create(:book)
+
+    log_in(email: @user.email, password: @user.password)
   end
 
   test 'visiting the index' do
