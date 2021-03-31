@@ -1,0 +1,48 @@
+# frozen_string_literal: true
+
+require 'application_system_test_case'
+
+class ReportsTest < ApplicationSystemTestCase
+  setup do
+    log_in(email: 'alice@example.com', password: 'password')
+  end
+
+  test 'visiting the index' do
+    visit reports_url
+
+    assert_selector 'h1', text: '日報'
+  end
+
+  test 'creating a Report' do
+    visit reports_url
+    click_on '新規作成'
+
+    fill_in 'タイトル', with: 'テスト技法'
+    fill_in '内容', with: 'ユニットテストを書きました。'
+    click_on '登録する'
+
+    assert_text '日報が作成されました。'
+    assert_text 'テスト技法'
+    assert_text 'ユニットテストを書きました。'
+  end
+
+  test 'updating a Report' do
+    visit reports_url
+    click_on '編集'
+
+    fill_in '内容', with: 'システムテストを修正しました。'
+    click_on '更新する'
+
+    assert_text '日報が更新されました。'
+    assert_text 'システムテストを修正しました。'
+  end
+
+  test 'destroying a Report' do
+    visit reports_url
+    page.accept_confirm do
+      click_on '削除'
+    end
+
+    assert_text '日報が削除されました。'
+  end
+end
