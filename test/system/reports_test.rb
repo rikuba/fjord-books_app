@@ -5,7 +5,7 @@ require 'application_system_test_case'
 class ReportsTest < ApplicationSystemTestCase
   setup do
     @user = create(:user)
-    @user.reports.create(attributes_for(:report))
+    @report = @user.reports.create(title: 'TDDの基本', content: 'テストファーストを身に付けました。')
 
     log_in(email: @user.email, password: @user.password)
   end
@@ -14,6 +14,7 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
 
     assert_selector 'h1', text: '日報'
+    assert_text @report.title
   end
 
   test 'creating a Report' do

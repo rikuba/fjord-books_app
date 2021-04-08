@@ -5,14 +5,16 @@ require 'application_system_test_case'
 class BooksTest < ApplicationSystemTestCase
   setup do
     @user = create(:user)
-    @book = create(:book)
+    @book = create(:book, title: 'プロを目指す人のためのRuby入門', memo: '為になる', author: 'jnchito')
 
     log_in(email: @user.email, password: @user.password)
   end
 
   test 'visiting the index' do
     visit books_url
+
     assert_selector 'h1', text: '本'
+    assert_text @book.title
   end
 
   test 'creating a Book' do
