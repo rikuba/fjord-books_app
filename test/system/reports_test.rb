@@ -14,7 +14,7 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
 
     assert_selector 'h1', text: '日報'
-    assert_text @report.title
+    assert_text 'TDDの基本'
   end
 
   test 'creating a Report' do
@@ -45,13 +45,13 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'destroying a Report' do
     visit reports_url
-    assert_text @report.title
+    assert_text 'TDDの基本'
 
     page.accept_confirm do
       click_on '削除'
     end
 
     assert_text '日報が削除されました。'
-    assert_no_text @report.title
+    assert_no_text 'TDDの基本'
   end
 end

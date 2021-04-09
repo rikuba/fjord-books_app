@@ -14,7 +14,7 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
 
     assert_selector 'h1', text: '本'
-    assert_text @book.title
+    assert_text 'プロを目指す人のためのRuby入門'
   end
 
   test 'creating a Book' do
@@ -45,13 +45,13 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'destroying a Book' do
     visit books_url
-    assert_text @book.title
+    assert_text 'プロを目指す人のためのRuby入門'
 
     page.accept_confirm do
       click_on '削除'
     end
 
     assert_text '本が削除されました。'
-    assert_no_text @book.title
+    assert_no_text 'プロを目指す人のためのRuby入門'
   end
 end
