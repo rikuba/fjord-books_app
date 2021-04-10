@@ -1,0 +1,27 @@
+<%= form_with(model: report) do |form| %>
+  <% if report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('errors.messages.not_saved', count: report.errors.count, resource: Report.model_name.human) %></h2>
+
+      <ul>
+        <% report.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

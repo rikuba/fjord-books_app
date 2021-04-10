@@ -1,0 +1,24 @@
+<%= form_with(model: [comment.commentable, comment]) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('errors.messages.not_saved', count: comment.errors.count, resource: Comment.model_name.human) %></h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :commentable_id %>
+  <%= form.hidden_field :commentable_type %>
+
+  <div class="field">
+    <%= form.text_area :content, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
